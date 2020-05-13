@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class CurrencyConverterWebController {
 
 
-    @GetMapping("/index")
+    @GetMapping("/")
     public String serveWebPageIndex() {
         return "index.html";
     }
 
-    @GetMapping("/")
+    @GetMapping("/start")
     public String serveWebPage() {
         return "start.html";
     }

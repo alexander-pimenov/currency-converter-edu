@@ -25,6 +25,12 @@ public class CurrencyConverterController {
         return new ResponseEntity<>(this.currencyService.getAllCurrencies(), HttpStatus.OK);
     }
 
+    //Currency by id.
+    @GetMapping(value = "/currency/{id}", produces = {"application/json"})
+    public Currency getCurrencyById(@PathVariable String id) {
+        return this.currencyService.getCurrencyBiId(id.toUpperCase());
+    }
+
     //Converts between two currencies
     @RequestMapping(value = "/currency-converter", produces = { "application/json" }, method = RequestMethod.POST)
     public ResponseEntity<Double> convertCurrencies(@RequestBody ConversionCurrency conversionCurrency) {

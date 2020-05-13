@@ -1,3 +1,9 @@
+//это чтоб увидеть что мы связываемся с файлом js
+//window.onload=function(){
+//
+//    alert("Приветсвую тебя на странице конвертора валют!!!")
+//}
+
 function getAllCurrencies() {
 
     var dropdownFrom = document.getElementById("dropdown-from");
@@ -50,10 +56,15 @@ function filterFunction(input, dropdown) {
 
 function fillButtonInfo() {
 
+    //лог чтоб видеть что этот метод вызывается
+    //console.log("Staff");
+
     var listAs = document.querySelectorAll(".dropdown-menu a");
 
     for(var i = 0; i < listAs.length; i++) {
         var a = listAs[i];
+        //здесь в аргументе click - это функция из метода jQuery,
+        //которая написана ниже в коде.
         a.addEventListener("click", function(evt) {
             var a = evt.target;
             var button = a.parentElement.previousElementSibling;
@@ -63,12 +74,16 @@ function fillButtonInfo() {
 }
 
 
+//подключаем jQuery. знак - $
+//обращаемся к элементу с id=convertButton: ("#convertButton")
 $("#convertButton").click(function() {
+    //это чтоб проверить что клик по кнопке работает
+    //alert("I was clicked!");
 
-     // Get from
+     // Get from, т.е. получаем текст из кнопки с id=dropdownFromButton
     var from = $('#dropdownFromButton').text();
 
-    // Get to
+    // Get to, т.е. получаем текст из кнопки с id=dropdownToButton
     var to = $('#dropdownToButton').text();
 
     // Get value

@@ -24,6 +24,14 @@ public class CurrencyService {
         return currencyList;
     }
 
+    public Currency getCurrencyBiId(String id) {
+        Optional<Currency> byId = currencyRepository.findById(id);
+        if (byId.isPresent()) {
+            return byId.get();
+        }
+        return new Currency("This name of Currency is not correct.", 0.0);
+    }
+
     public Optional<Double> convert(ConversionCurrency conversionCurrency) {
 
         //Достаем валюты из БД
@@ -31,10 +39,10 @@ public class CurrencyService {
         Optional<Currency> fromOptional = this.currencyRepository.findById(conversionCurrency.getFrom().toUpperCase());
 
         //Проверяем, что такие валюты есть.
-        if(toOptional.isPresent() && fromOptional.isPresent()) {
+        if (toOptional.isPresent() && fromOptional.isPresent()) {
 
             //И сумму валюты ввели не отрицательную
-            if(conversionCurrency.getValue() < 0) {
+            if (conversionCurrency.getValue() < 0) {
                 return Optional.empty();
             }
 
